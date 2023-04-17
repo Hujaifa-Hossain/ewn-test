@@ -1,15 +1,10 @@
-import { FaRegUser, FaLock } from "react-icons/fa";
+import { FaLock } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-const Register = () => {
+const Login = () => {
   return (
     <div className="container">
       <form className="form signUp">
-        <h2>Sign Up</h2>
-        <div className="inputBox">
-          <input type="text" required />
-          <FaRegUser className="icon"/>
-          <span>Username</span>
-        </div>
+        <h2>Sign In</h2>
         <div className="inputBox">
           <input type="email" required />
           <HiOutlineMail className="icon"/>
@@ -21,14 +16,14 @@ const Register = () => {
           <span>Password</span>
         </div>
         <div className="inputBox">
-          <input type="submit" value="Create Account" />
+          <input type="submit" value="Log In" />
         </div>
         <p>
-          Already a member ?<a href="#"> Log in</a>
+          Not registered ?<a href="#"> Create an account</a>
         </p>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Login;
