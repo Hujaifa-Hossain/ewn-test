@@ -1,6 +1,6 @@
 import { FaRegUser, FaLock } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-const Register = () => {
+const Register = ({setIndex}) => {
   return (
     <div className="container">
       <form className="form signUp">
@@ -24,7 +24,7 @@ const Register = () => {
           <input type="submit" value="Create Account" />
         </div>
         <p>
-          Already a member ?<a href="#"> Log in</a>
+          Already a member ?<span onClick={() => setIndex(1)}> Log in</span>
         </p>
       </form>
     </div>

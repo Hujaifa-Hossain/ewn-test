@@ -3,7 +3,7 @@ import Auth from './pages/Auth';
 
 const App = () => {
   return (
-    <div>
+    <div className='app'>
       <Auth/>
     </div>
   );

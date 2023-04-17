@@ -1,9 +1,38 @@
-.auth {
+.auth-box{
+  background: #223243;
   min-height: 100vh;
+}
+
+.auth {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.tabs{
+  padding: 20px 0;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.tabs .tab-head{
+  padding: 10px 40px;
   background: #223243;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: .5em;
+  letter-spacing: 2px;
+  transition: 0.8s;
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 10% 50%, 0% 0%);
+  cursor: pointer;
+}
+
+.tabs .active{
+  background: #00dfc4;
 }
 
 .container {
@@ -81,7 +110,7 @@
 
 .container .form .inputBox input[type='submit']{
   background: #00dfc4;
-  color: #223243;
+  color: #e3e3e3;
   padding: 10px 0;
   font-weight: 500;
   cursor: pointer;
@@ -97,8 +126,8 @@
   font-weight: 300;
 }
 
-.container .form p a{
+.container .form p span{
   color: #fff;
   font-weight: 500;
-  text-decoration: none;
+  cursor: pointer;
 }

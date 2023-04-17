@@ -1,6 +1,6 @@
 import { FaLock } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-const Login = () => {
+const Login = ({setIndex}) => {
   return (
     <div className="container">
       <form className="form signUp">
@@ -19,7 +19,7 @@ const Login = () => {
           <input type="submit" value="Log In" />
         </div>
         <p>
-          Not registered ?<a href="#"> Create an account</a>
+          Not registered ?<span onClick={() => setIndex(0)}> Create an account</span>
         </p>
       </form>
     </div>
