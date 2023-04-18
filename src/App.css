@@ -1,16 +1,44 @@
-.auth-box{
+header{
+  min-height: 10vh;
   background: #223243;
-  min-height: 100vh;
 }
 
-.auth {
+header .header{
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  color: #e3e3e3;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header button{
+  padding: 10px 40px;
+  background: #00dfc4;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: .5em;
+  letter-spacing: 2px;
+  transition: 0.8s;
+  clip-path: polygon(90% 0, 100% 50%, 90% 100%, 0% 100%, 10% 50%, 0% 0%);
+  cursor: pointer;
+}
+
+.auth-box{
+  min-height: 90vh;
+  background: #223243;
+}
+
+.auth-box .auth {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .tabs{
-  padding: 20px 0;
+  padding: 25px 0;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -53,6 +81,11 @@
   gap: 25px;
 }
 
+.container .form .error-text{
+  color: #00dfc4;
+  margin: 0;
+}
+
 .container .form h2{
   color: #fff;
   font-weight: 500;
@@ -65,7 +98,7 @@
 }
 
 .container .form .inputBox input{
-  padding: 12px 10px 12px 48px;
+  padding: 16px 10px 12px 48px;
   border: none;
   width: 100%;
   background: #223243;
@@ -78,23 +111,10 @@
   5px 5px 15px rgba(0, 0, 0, 0.35);
   transition: 0.5s;
   outline: none;
+  font-size: 16px;
 }
-
-.container .form .inputBox span{
-  position: absolute;
-  left: 0;
-  padding: 12px 10px 12px 48px;
-  pointer-events: none;
-  font-size: 1em;
-  font-weight: 300;
-  transition: 0.5s;
-  letter-spacing: 0.0em;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.container .form .inputBox input:valid ~ span,
-.container .form .inputBox input:focus ~ span{
-  color: #00dfc4;
+.container .form .inputBox ::placeholder{
+   color: #ffffff80;
 }
 
 .container .form .inputBox .icon{
