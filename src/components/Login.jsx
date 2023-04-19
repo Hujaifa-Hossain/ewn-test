@@ -88,7 +88,7 @@ function Login({ setIndex }) {
 }
 
 Login.propTypes = {
-  setIndex: PropTypes.number.isRequired,
+  setIndex: PropTypes.func.isRequired,
 };
 
 export default Login;

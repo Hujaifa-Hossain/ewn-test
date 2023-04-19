@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 import React, { createContext, useEffect, useState } from 'react';
 import {
-	signOut,
-	getAuth,
-	updateProfile,
-	onAuthStateChanged,
-	sendEmailVerification,
-	signInWithEmailAndPassword,
-	createUserWithEmailAndPassword,
+  signOut,
+  getAuth,
+  updateProfile,
+  onAuthStateChanged,
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import PropTypes from 'prop-types';
 import app from '../firebase/firebase.config';
@@ -15,61 +15,60 @@ import app from '../firebase/firebase.config';
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
-function AuthProvider ({ children }) {
+function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  const createUser = (email, password) => {
+    setLoading(true);
+    return createUserWithEmailAndPassword(auth, email, password);
+  };
 
-	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(true);
+  const signIn = (email, password) => {
+    setLoading(true);
+    return signInWithEmailAndPassword(auth, email, password);
+  };
 
-	const createUser = (email, password) => {
-		setLoading(true);
-		return createUserWithEmailAndPassword(auth, email, password);
-	};
+  const updateUserProfile = (profile) =>
+    updateProfile(auth.currentUser, profile);
 
-	const signIn = (email, password) => {
-		setLoading(true);
-		return signInWithEmailAndPassword(auth, email, password);
-	};
+  const verifyEmail = () => sendEmailVerification(auth.currentUser);
 
-	const updateUserProfile = (profile) => updateProfile(auth.currentUser, profile);
+  const logOut = () => {
+    setLoading(true);
+    return signOut(auth);
+  };
 
-	const verifyEmail = () => sendEmailVerification(auth.currentUser);
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser === null || currentUser.emailVerified) {
+        setUser(currentUser);
+      }
+      setLoading(false);
+    });
 
-	const logOut = () => {
-		setLoading(true);
-		return signOut(auth);
-	};
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-	useEffect(() => {
-		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-			if (currentUser === null || currentUser.emailVerified) {
-				setUser(currentUser);
-			}
-			setLoading(false);
-		});
+  const authInfo = {
+    user,
+    logOut,
+    loading,
+    signIn,
+    createUser,
+    setLoading,
+    verifyEmail,
+    updateUserProfile,
+  };
 
-		return () => {
-			unsubscribe();
-		};
-	}, []);
-
-	const authInfo = {
-		user,
-		logOut,
-		loading,
-		signIn,
-		createUser,
-		setLoading,
-		verifyEmail,
-		updateUserProfile,
-	};
-
-	return (
-		<AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
-	);
-};
+  return (
+    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+  );
+}
 
 AuthProvider.propTypes = {
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
 };
 export default AuthProvider;

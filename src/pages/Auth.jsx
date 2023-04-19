@@ -29,15 +29,15 @@ function Auth () {
 			</div>
 			<div className='auth'>
 				<div hidden={index !== 0}>
-					<Register setIndex={setIndex} />
+					<Register index={index} setIndex={setIndex} />
 				</div>
 
 				<div hidden={index !== 1}>
-					<Login setIndex={setIndex} />
+					<Login index={index} setIndex={setIndex} />
 				</div>
 
 				<div hidden={index !== 2}>
-					<Reset setIndex={setIndex} />
+					<Reset index={index} setIndex={setIndex} />
 				</div>
 			</div>
 		</div>
