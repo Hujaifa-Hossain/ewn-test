@@ -21,7 +21,7 @@ const Login = ({ setIndex }) => {
         form.reset();
         setError("");
         if (user.emailVerified) {
-          toast.success(`hello ${user?.displayName}`)
+          toast.success(`hello ${user?.displayName}`);
         } else {
           toast.error("Please verify email & login.", {
             duration: 4000,
@@ -40,20 +40,31 @@ const Login = ({ setIndex }) => {
 
   return (
     <div className="container">
-      <form className="form signUp" onSubmit={handleSubmit}>
-      {error && <p className="error-text">{error}</p>}
+      <form className="form" onSubmit={handleSubmit}>
+        {error && <p className="error-text">{error}</p>}
         <h2>Log In</h2>
+
         <div className="inputBox">
-          <input name="email" type="email" placeholder="your email" required />
+          <input name="email" type="email" placeholder="your email" autoComplete="username" required />
           <HiOutlineMail className="icon" />
         </div>
+
         <div className="inputBox">
-          <input name="password" type="password" placeholder="your password" required />
+          <input
+            name="password"
+            type="password"
+            autoComplete="current-password"
+            placeholder="your password"
+            required
+          />
           <FaLock className="icon" />
         </div>
+
         <div className="inputBox">
-          <input type="submit" value="Log In" />
+          <input type="submit" value="Log In" onClick={() => setIndex(2)}/>
         </div>
+
+        <p className="reset-link" onClick={() => setIndex(2)}>Forgot password ?</p>
         <p>
           Not registered ?
           <span onClick={() => setIndex(0)}> Create an account</span>

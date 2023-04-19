@@ -25,12 +25,12 @@ const Register = ({ setIndex }) => {
         handleUpdateUserProfile(name);
         handleEmailVerification();
         toast.success("Hurray! signed up! Please verify email & login.", {
-          duration: 4000,
+          duration: 2000,
         });
       })
-      .catch((e) => {
-        setError(e.message);
-        toast.error(e.message);
+      .catch((error) => {
+        setError(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -52,17 +52,22 @@ const Register = ({ setIndex }) => {
 
   return (
     <div className="container">
-      <form className="form signUp" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         {error && <p className="error-text">{error}</p>}
         <h2>Sign Up</h2>
 
         <div className="inputBox">
-          <input name="name" type="text" placeholder="your username" required />
+          <input
+            name="name"
+            type="text"
+            placeholder="your username"
+            required
+          />
           <FaRegUser className="icon" />
         </div>
 
         <div className="inputBox">
-          <input name="email" type="email" placeholder="your email" required />
+          <input name="email" type="email" placeholder="your email" autoComplete="username" required />
           <HiOutlineMail className="icon" />
         </div>
 
@@ -70,6 +75,7 @@ const Register = ({ setIndex }) => {
           <input
             name="password"
             type="password"
+            autoComplete="current-password"
             placeholder="your password"
             required
           />

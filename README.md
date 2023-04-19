@@ -1,5 +1,4 @@
 ##### EWN - TEST
-
 ###### Position: Frontend Developer Trainee
 
 ##### Hosted @ Firebase

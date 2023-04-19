@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import Reset from "../components/Reset";
 
 const Auth = () => {
   const [index, setIndex] = useState(0);
@@ -19,6 +20,12 @@ const Auth = () => {
         >
           Log In
         </div>
+        <div
+          className={`tab-head ${index === 2 ? "active" : null}`}
+          onClick={() => setIndex(2)}
+        >
+          Reset
+        </div>
       </div>
       <div className="auth">
         <div  hidden={index !== 0}>
@@ -27,6 +34,10 @@ const Auth = () => {
 
         <div hidden={index !== 1}>
           <Login setIndex={setIndex}/>
+        </div>
+
+        <div hidden={index !== 2}>
+          <Reset setIndex={setIndex}/>
         </div>
       </div>
     </div>

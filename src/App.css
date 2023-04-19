@@ -31,7 +31,7 @@ header .header{
   background: #223243;
 }
 
-.auth-box .auth {
+.auth {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,10 +43,9 @@ header .header{
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
 }
 
-.tabs .tab-head{
+.tab-head{
   padding: 10px 40px;
   background: #223243;
   color: #fff;
@@ -59,7 +58,7 @@ header .header{
   cursor: pointer;
 }
 
-.tabs .active{
+.active{
   background: #00dfc4;
 }
 
@@ -73,7 +72,7 @@ header .header{
   inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-.container .form{
+.form{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,23 +80,24 @@ header .header{
   gap: 25px;
 }
 
-.container .form .error-text{
+.error-text{
   color: #00dfc4;
   margin: 0;
 }
 
-.container .form h2{
+.form h2{
   color: #fff;
   font-weight: 500;
+  font-size: 26px;
   letter-spacing: 0.1em;
 }
 
-.container .form .inputBox{
+.inputBox{
   position: relative;
   width: 300px;
 }
 
-.container .form .inputBox input{
+.inputBox input{
   padding: 16px 10px 12px 48px;
   border: none;
   width: 100%;
@@ -113,11 +113,11 @@ header .header{
   outline: none;
   font-size: 16px;
 }
-.container .form .inputBox ::placeholder{
+.inputBox ::placeholder{
    color: #ffffff80;
 }
 
-.container .form .inputBox .icon{
+.icon{
   position: absolute;
   top: 15px ;
   left: 16px;
@@ -128,7 +128,7 @@ header .header{
   border-right: 1px solid #00dfc4;
 }
 
-.container .form .inputBox input[type='submit']{
+.inputBox input[type='submit'], input[type='button']{
   background: #00dfc4;
   color: #e3e3e3;
   padding: 10px 0;
@@ -140,14 +140,18 @@ header .header{
   inset 5px 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-.container .form p{
+.form p{
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.75em;
   font-weight: 300;
 }
 
-.container .form p span{
+.form span{
   color: #fff;
   font-weight: 500;
+  cursor: pointer;
+}
+
+.reset-link{
   cursor: pointer;
 }
