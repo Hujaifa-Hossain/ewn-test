@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import { FaLock } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
-import { AuthContext } from "../context/AuthProvider";
-import { toast } from "react-hot-toast";
+import React, { useContext, useState } from 'react';
+import { FaLock } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
+import { toast } from 'react-hot-toast';
+import PropTypes from 'prop-types';
+import { AuthContext } from '../context/AuthProvider';
 
-const Login = ({ setIndex }) => {
-  const [error, setError] = useState("");
+function Login({ setIndex }) {
+  const [error, setError] = useState('');
   const { signIn, setLoading } = useContext(AuthContext);
 
   const handleSubmit = (event) => {
@@ -16,22 +17,20 @@ const Login = ({ setIndex }) => {
 
     signIn(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const user = result?.user;
         form.reset();
-        setError("");
+        setError('');
         if (user.emailVerified) {
           toast.success(`hello ${user?.displayName}`);
         } else {
-          toast.error("Please verify email & login.", {
+          toast.error('Please verify email & login.', {
             duration: 4000,
           });
         }
       })
-      .catch((error) => {
-        console.error(error);
-        setError(error.message);
-        toast.error(error.message);
+      .catch((e) => {
+        setError(e.message);
+        toast.error(e.message);
       })
       .finally(() => {
         setLoading(false);
@@ -45,7 +44,13 @@ const Login = ({ setIndex }) => {
         <h2>Log In</h2>
 
         <div className="inputBox">
-          <input name="email" type="email" placeholder="your email" autoComplete="username" required />
+          <input
+            name="email"
+            type="email"
+            placeholder="your email"
+            autoComplete="username"
+            required
+          />
           <HiOutlineMail className="icon" />
         </div>
 
@@ -61,17 +66,29 @@ const Login = ({ setIndex }) => {
         </div>
 
         <div className="inputBox">
-          <input type="submit" value="Log In" onClick={() => setIndex(2)}/>
+          <input type="submit" value="Log In" onClick={() => setIndex(2)} />
         </div>
 
-        <p className="reset-link" onClick={() => setIndex(2)}>Forgot password ?</p>
+        <button
+          type="button"
+          className="reset-link"
+          onClick={() => setIndex(2)}
+        >
+          Forgot password ?
+        </button>
         <p>
           Not registered ?
-          <span onClick={() => setIndex(0)}> Create an account</span>
+          <button type="button" onClick={() => setIndex(0)}>
+            Create an account
+          </button>
         </p>
       </form>
     </div>
   );
+}
+
+Login.propTypes = {
+  setIndex: PropTypes.number.isRequired,
 };
 
 export default Login;

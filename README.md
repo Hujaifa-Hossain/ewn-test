@@ -20,7 +20,7 @@ https://ewn-test-paper.firebaseapp.com/
 * After signing up every user is required to verify his/her email to login.
 * Logged in user can logout from top navigation. If you don't see logout button, please refresh.
 
-###### If you want to log in first
+###### If you want to login without sign up
 ```bash
   email: 21hujaifa@gmail.com
   password: hujaifa21.

@@ -1,9 +1,10 @@
-import "./App.css";
-import Auth from "./pages/Auth";
-import Header from "./shared/Header";
-import { Toaster } from "react-hot-toast";
+import './App.css';
+import React from 'react';
+import { Toaster } from 'react-hot-toast';
+import Auth from './pages/Auth';
+import Header from './shared/Header';
 
-const App = () => {
+function App() {
   return (
     <div className="app">
       <Header />
@@ -11,6 +12,6 @@ const App = () => {
       <Toaster />
     </div>
   );
-};
+}
 
 export default App;
